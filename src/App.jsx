@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Header/Header";
 import AddEmployee from "./components/AddEmployee/AddEmployee";
 const { Content } = Layout;
+import { Outlet } from "react-router-dom";
 const App = () => {
   const [dark, setDark] = useState(true);
   const [ collapse, setCollapse ] = useState(false);
@@ -36,7 +37,7 @@ const App = () => {
             </div>
           </div>
           <div className="sm:m-3 bg-white dark:bg-gray-500 min-h-[800px] rounded p-3">
-            <AddEmployee />
+            <Outlet/>
           </div>
         </Content>
       </Layout>

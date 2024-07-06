@@ -2,3 +2,8 @@
 .env
 dist
 node_modules
+
+.gitignore
+
+src/components/ForgetPassword
+src/components/Testing
