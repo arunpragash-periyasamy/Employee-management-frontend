@@ -4,6 +4,6 @@ dist
 node_modules
 
 .gitignore
-
+.cahce/*
 
 src/components/Testing

@@ -3,17 +3,19 @@ import { Layout, Menu, } from "antd";
 import { FaUsers } from "react-icons/fa";
 
 import AdminImage from "../../assets/admin.jpg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
-const Sidebar = ({dark, collapse}) => {
+const Sidebar = ({ dark, collapse }) => {
+  const { pathname } = useLocation();
+  console.log(pathname)
   return (
     <Sider className="hidden lg:block max-h-full fixed " collapsed={collapse}>
       <Menu
         mode="inline"
-        defaultSelectedKeys={["1"]}
+        defaultSelectedKeys={pathname}
         defaultOpenKeys={["sub1"]}
         className="h-full text-xs dark:bg-slate-950 dark:text-slate-300"
         theme={dark ? "dark" : "light"}
@@ -33,28 +35,19 @@ const Sidebar = ({dark, collapse}) => {
         )}
         {!collapse && <p className="ml-3 text-xs">Main</p>}
         <SubMenu key="Employee Section" icon={<FaUsers />} title="Employees">
+            <Menu.Item key="/employee">
           <Link to='employee'>
-            <Menu.Item key="employee">Employee</Menu.Item>
+              Add Employee
           </Link>
+            </Menu.Item>
+            <Menu.Item key="/employees">
           <Link to='employees'>
-            <Menu.Item key="employees">Employees</Menu.Item>
+              Employees
           </Link>
-          <Menu.Item key="2">Employees</Menu.Item>
-          <Menu.Item key="3">option3</Menu.Item>
-          <Menu.Item key="4">option4</Menu.Item>
+            </Menu.Item>
+          
         </SubMenu>
-        <SubMenu key="sub2" icon={<FaUsers />} title="subnav 2">
-          <Menu.Item key="5">option5</Menu.Item>
-          <Menu.Item key="6">option6</Menu.Item>
-          <Menu.Item key="7">option7</Menu.Item>
-          <Menu.Item key="8">option8</Menu.Item>
-        </SubMenu>
-        <SubMenu key="sub3" icon={<FaUsers />} title="subnav 3">
-          <Menu.Item key="9">option9</Menu.Item>
-          <Menu.Item key="10">option10</Menu.Item>
-          <Menu.Item key="11">option11</Menu.Item>
-          <Menu.Item key="12">option12</Menu.Item>
-        </SubMenu>
+        
       </Menu>
     </Sider>
   );

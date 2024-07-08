@@ -396,7 +396,7 @@ const AddEmployee = () => {
             placeholder="Education"
           />
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           label={
             <span className="dark:text-slate-100 text-[18px] md:col-span-2">
               Profile
@@ -407,7 +407,7 @@ const AddEmployee = () => {
           valuePropName="value"
         >
           <UploadImage count={1} />
-        </Form.Item>
+        </Form.Item> */}
 
         <Space className="flex justify-end min-w-full">
           <Button type="primary" htmlType="submit">
