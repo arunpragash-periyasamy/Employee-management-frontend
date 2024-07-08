@@ -5,7 +5,10 @@ import Header from "./components/Header/Header";
 import AddEmployee from "./components/AddEmployee/AddEmployee";
 const { Content } = Layout;
 import { Outlet } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 const App = () => {
+
+    const notify = () => toast("Wow so easy!");
   const [dark, setDark] = useState(true);
   const [ collapse, setCollapse ] = useState(false);
   useEffect(() => {
@@ -14,7 +17,11 @@ const App = () => {
     } else {
       document.body.classList.remove("dark");
     }
-  },[dark])
+  }, [dark])
+  
+  useEffect(() => {
+    notify(); 
+  },[]);
   return (
     <Layout className="max-w-full min-h-screen bg-slate-200">
       <Header
@@ -37,7 +44,7 @@ const App = () => {
             </div>
           </div>
           <div className="sm:m-3 bg-white dark:bg-gray-500 min-h-[800px] rounded p-3">
-            <Outlet/>
+            <Outlet />
           </div>
         </Content>
       </Layout>

@@ -5,6 +5,7 @@ import Login from '../components/Login/Login';
 import ForgetPasword from '../components/ForgetPassword/ForgetPassword';
 import AddEmployee from '../components/AddEmployee/AddEmployee';
 import ViewEmployees from '../components/ViewEmployees/ViewEmployees';
+import Department from '../components/Department/Department';
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
       {
         path: "/employees",
           element: <ViewEmployees />,
+        
+      },
+      {
+        path: "/department",
+          element: <Department />,
         
       },
     ],

@@ -38,7 +38,8 @@ module.exports = {
         ".ant-table-wrapper": {
           "@apply bg-white dark:bg-gray-800": {},
           "& .ant-table": {
-            "@apply bg-white dark:bg-gray-800 rounded-xl": {},
+            "@apply bg-white dark:bg-gray-800 rounded-xl md:overflow-y-hidden overflow-y-scroll":
+              {},
           },
           "& .ant-table-thead > tr > th": {
             "@apply bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-600":
@@ -49,7 +50,8 @@ module.exports = {
               {},
           },
           "& .ant-table-tbody > tr:hover > td": {
-            "@apply bg-gray-50 dark:bg-gray-700": {},
+            "@apply bg-gray-50 dark:bg-slate-700 text-gray-800 dark:text-slate-100":
+              {},
           },
           "& .ant-table-cell": {
             "@apply text-gray-800 dark:text-white": {},
@@ -80,14 +82,19 @@ module.exports = {
             },
           },
         },
+        // Add this new style for extra specificity
+        ".dark .ant-table-tbody > tr:hover > td, .dark .ant-table-tbody > tr.ant-table-row:hover > td":
+          {
+            "@apply bg-slate-700 text-slate-100 !important": {},
+          },
 
         // Ant Design Button styles (for the action buttons in the table)
         ".ant-btn-primary": {
           "@apply bg-blue-500 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-500 text-white border-transparent":
             {},
         },
-        ".ant-btn-dangerous": {
-          "@apply bg-red-500 hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-500 text-white border-transparent":
+         ".ant-btn-dangerous": {
+          "@apply bg-red-500 hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-500 border-transparent !important":
             {},
         },
       });

@@ -1,43 +1,12 @@
 import {useState, useEffect} from "react";
-import { Table, Button, Space } from "antd";
+import { Button, Space } from "antd";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Table from "../Table/Table";
 
 const EmployeeTable = () => {
     const navigate = useNavigate();
     const [dataSource, setDataSource] = useState([]);
-//   const dataSource = [
-//     {
-//       id: 203,
-//       firstName: "John",
-//       lastName: "Doe updated",
-//       email: "johndoe@example.com",
-//       gender: "Male",
-//       mobileNumber: 1234567890,
-//       password: "password123",
-//       confirmPassword: "password123",
-//       designation: "Software Engineer",
-//       department: "Engineering",
-//       address: "123 Main St, Anytown, USA",
-//       education: "Bachelor of Science in Computer Science",
-//       dateOfBirth: "1990-01-01T00:00:00.000+00:00",
-//     },
-//     {
-//       id: 204,
-//       firstName: "John",
-//       lastName: "Doe",
-//       email: "johndoe@example.com",
-//       gender: "Male",
-//       mobileNumber: 1234567890,
-//       password: "password123",
-//       confirmPassword: "password123",
-//       designation: "Software Engineer",
-//       department: "Engineering",
-//       address: "123 Main St, Anytown, USA",
-//       education: "Bachelor of Science in Computer Science",
-//       dateOfBirth: "1990-01-01T00:00:00.000+00:00",
-//     },
-//   ];
 
   const handleEdit = (id) => {
     // Navigate to the edit page with the selected employee id
@@ -55,14 +24,19 @@ const EmployeeTable = () => {
 
   const columns = [
     {
-      title: "First Name",
-      dataIndex: "firstName",
-      key: "firstName",
+      title: "SNo",
+      key: "serial",
+      render: (text, record, index) => index + 1,
     },
     {
-      title: "Last Name",
-      dataIndex: "lastName",
-      key: "lastName",
+      title: "Employee Id",
+      dataIndex: "empId",
+      key: "empId",
+    },
+    {
+      title: "Employee Name",
+      dataIndex: "name",
+      key: "name",
     },
     {
       title: "Email",
@@ -131,7 +105,7 @@ const EmployeeTable = () => {
     
     const getData = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/api/employee/employees");
+            const response = await axios.get("http://localhost:8080/api/employee");
             const data = response.data;
             data.forEach((employee) => {
                 employee.dateOfBirth = new Date(employee.dateOfBirth);
@@ -151,15 +125,7 @@ const EmployeeTable = () => {
     }, []);
 
   return (
-    <div className="table-container max-h-full md:max-h-none md:overflow-hidden overflow-y-auto">
-      <Table
-        dataSource={dataSource}
-        columns={columns}
-        rowKey="id"
-        className="ant-table-wrapper rounded-xl"
-        pagination={false}
-      />
-    </div>
+    <Table dataSource={dataSource} columns={columns}/>
   );
 };
 
